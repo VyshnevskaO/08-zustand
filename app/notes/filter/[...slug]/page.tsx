@@ -38,10 +38,10 @@ export async function generateMetadata({ params }: NotesByCategoryProps){
 const NotesByCategory = async ({ params }: NotesByCategoryProps) => {
     const { slug } = await params;
     const category = slug[0] === "all" ? undefined : slug[0];
-    const response = await fetchNotes({ page: 1, query: "", category: category });
+    const response = await fetchNotes({ page: 1, query: "", tag: category });
     return (
         <div>
-            <NotesClient initialData={response} category={category}/>
+            <NotesClient initialData={response} tag={category}/>
         </div>
     )
 }
