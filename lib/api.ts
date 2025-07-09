@@ -13,12 +13,11 @@ interface FetchNotesResponse {
 
 }
 
-interface CreateNoteProps {
-  title: string;
+export interface NewNoteData {
+  title?: string;
   content?: string;
-  tag: string;
-}
-
+  category?: string;
+};
 
 
 
@@ -48,24 +47,6 @@ export const fetchNotes = async ({ page, query, tag }: FetchNotesProps): Promise
 };
   
 
-export const createNote = async ({ title, content, tag }: CreateNoteProps): Promise<Note> => {
-  const res = await axios.post<Note>(
-    "https://notehub-public.goit.study/api/notes",
-    {
-      title,
-      content,
-      tag,
-    },
-    {
-      headers: {
-        Authorization: `Bearer ${API_KEY}`,
-        "Content-Type": "application/json",
-      },
-    }
-  );
-  return res.data;
-};
-
 
 export const deleteNote = async (id: number): Promise<Note> => {
   const res = await axios.delete<Note>(`https://notehub-public.goit.study/api/notes/${id}`, {
@@ -84,3 +65,16 @@ export const fetchNoteById = async (id: number):Promise<Note> => {
   });
   return res.data;
 }
+
+export const createNewNote = async (data:NewNoteData) => {
+  const res = await axios.post<Note>(`https://notehub-public.goit.study/api/notes/`, {
+    data,
+    headers: {
+      Authorization: `Bearer ${API_KEY}`,
+    },
+  });
+  return res.data;
+}
+
+
+

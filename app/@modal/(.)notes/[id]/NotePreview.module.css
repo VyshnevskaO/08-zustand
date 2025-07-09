@@ -36,7 +36,7 @@
 
 .date {
   font-size: 14px;
-  color: #888;
+  color: #444;
   text-align: right;
 }
 
@@ -53,6 +53,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 .backBtn {
   align-self: flex-start;
   padding: 6px 12px;
