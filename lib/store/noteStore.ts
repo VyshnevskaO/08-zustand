@@ -12,7 +12,7 @@ clearDraft: () => void
 const initialDraft:NewNoteData = {
   title: '',
   content: '',
-  category: '',
+  tag: '',
 }
 
 export const useNoteDraftStore = create<NoteDraftStore>()(persist(

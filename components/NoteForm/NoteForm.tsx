@@ -6,11 +6,11 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createNewNote, NewNoteData } from "@/lib/api"; 
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
-import { Category } from "@/types/note";
+import { Tag } from "@/types/note";
 import { useNoteDraftStore } from "@/lib/store/noteStore";
 
 
-const categories: Category[] = ['Todo', 'Work', 'Personal', 'Meeting', 'Shopping'];
+const tags: Tag[] = ['Todo', 'Work', 'Personal', 'Meeting', 'Shopping'];
 
 export default function NoteForm() {
     const queryClient = useQueryClient();
@@ -27,18 +27,7 @@ export default function NoteForm() {
       });
     }
 
-    // const NoteFormSchema = Yup.object().shape({
-    //     title: Yup.string()
-    //       .min(3, "Title must be at least 3 characters")
-    //       .max(50, "Title is too long")
-    //       .required("Title is required"),
-    //     content: Yup.string()
-    //         .max(500, "Content is too long"),
-    //     tag: Yup.string()
-    //         .oneOf(["Todo", "Work", "Personal", "Meeting", "Shopping"])
-    //         .required("Tag is required"),
-    // });
-
+  
   
     const {mutate} = useMutation({
       mutationFn: createNewNote,
@@ -74,9 +63,9 @@ export default function NoteForm() {
            <textarea name="content" id={`${fieldId}-content`} rows={8} className={css.textarea} defaultValue={draft?.content} onChange={handleChange}/>
         </div>
         <div className={css.formGroup}>
-      <label htmlFor={`${fieldId}-category`}>Category</label>
-           <select name="category" id={`${fieldId}-category`} className={css.select} defaultValue={draft?.category} onChange={handleChange}>
-               {categories.map((category) => (<option key={category} value={category}>{category}</option>))}
+      <label htmlFor={`${fieldId}-tag`}>Category</label>
+           <select name="tag" id={`${fieldId}-tag`} className={css.select} defaultValue={draft?.tag} onChange={handleChange}>
+               {tags.map((tag) => (<option key={tag} value={tag}>{tag}</option>))}
            </select>
         </div>
         <div className={css.actions}>

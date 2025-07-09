@@ -9,16 +9,16 @@ type NotesByCategoryProps = {
 
 export async function generateMetadata({ params }: NotesByCategoryProps){
     const {slug} = await params
-    const category = slug[0] === "all" ? undefined : slug[0];
-    const title = category ? `${category} notes` : "All notes";
-    const description = category ? `Notes filtered by category ${category}.` : "No filter applied. All notes are shown.";
+    const tag = slug[0] === "all" ? undefined : slug[0];
+    const title = tag ? `${tag} notes` : "All notes";
+    const description = tag ? `Notes filtered by category ${tag}.` : "No filter applied. All notes are shown.";
        return{
         title,
         description,
         openGraph: {
          title,
          description,
-         url: `https://notehub.com/notes/filter/${category || "all"}`,
+         url: `https://notehub.com/notes/filter/${tag || "all"}`,
          images: [
         {
           url: 'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',
@@ -37,11 +37,11 @@ export async function generateMetadata({ params }: NotesByCategoryProps){
 
 const NotesByCategory = async ({ params }: NotesByCategoryProps) => {
     const { slug } = await params;
-    const category = slug[0] === "all" ? undefined : slug[0];
-    const response = await fetchNotes({ page: 1, query: "", tag: category });
+    const tag = slug[0] === "all" ? undefined : slug[0];
+    const response = await fetchNotes({ page: 1, query: "", tag});
     return (
         <div>
-            <NotesClient initialData={response} tag={category}/>
+            <NotesClient initialData={response} tag={tag}/>
         </div>
     )
 }

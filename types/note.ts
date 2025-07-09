@@ -2,11 +2,11 @@ export interface Note {
     id: number;
     title: string;
     content: string;
-    category: string;
+    tag: string;
     createdAt: string;
     updatedAt: string;
 }
 
 
- export type Category = 'Todo' | 'Work' | 'Personal' | 'Meeting' | 'Shopping';
+ export type Tag = 'Todo' | 'Work' | 'Personal' | 'Meeting' | 'Shopping';
  

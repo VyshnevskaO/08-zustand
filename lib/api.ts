@@ -16,7 +16,7 @@ interface FetchNotesResponse {
 export interface NewNoteData {
   title?: string;
   content?: string;
-  category?: string;
+  tag?: string;
 };
 
 

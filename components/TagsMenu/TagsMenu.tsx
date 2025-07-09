@@ -2,9 +2,9 @@
 import css from "./TagsMenu.module.css"
 import { useState } from "react"
 import Link from "next/link"
-import { Category } from "@/types/note"
+import {Tag } from "@/types/note"
 
-const categories: Category[] = ['Todo', 'Work', 'Personal', 'Meeting', 'Shopping'];
+const tags: Tag[] = ['Todo', 'Work', 'Personal', 'Meeting', 'Shopping'];
 
 
 const TagsMenu = () => {
@@ -20,10 +20,10 @@ const TagsMenu = () => {
                     <li className={css.menuItem}>
                         <Link href={`/notes/filter/all`} className={css.menuLink} onClick={toggle}>All Notes</Link>
                     </li>
-                    {categories.map((category) => (
-                    <li key={category} className={css.menuItem}>
-                        <Link href={`/notes/filter/${category}`} className={css.menuLink} onClick={toggle}>
-                        {category}</Link>
+                    {tags.map((tag) => (
+                    <li key={tag} className={css.menuItem}>
+                        <Link href={`/notes/filter/${tag}`} className={css.menuLink} onClick={toggle}>
+                        {tag}</Link>
                    </li>
                  ))}
 
