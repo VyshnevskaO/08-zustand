@@ -12,17 +12,19 @@ clearDraft: () => void
 const initialDraft:NewNoteData = {
   title: '',
   content: '',
-  tag: '',
+  tag: 'Todo',
 }
 
-export const useNoteDraftStore = create<NoteDraftStore>()(persist(
+export const useNoteDraftStore = create<NoteDraftStore>()(
+  persist(
   (set)=>({
     draft: initialDraft,
     setDraft: (note) => set(()=>({draft:note})),
     clearDraft:()=> set(()=>({draft:initialDraft}))
-})
-,{
+}),
+{
     name: 'note-draft',
     partialize:(state)=>({draft:state.draft})
 }
-  ))
+  )
+)

@@ -1,12 +1,13 @@
 import { fetchNoteById } from "@/lib/api";
 import NoteDetailsClient from "./NoteDetails.client";
 import { dehydrate, HydrationBoundary, QueryClient } from "@tanstack/react-query";
+import { Metadata } from "next";
 
 type Props = {
     params:Promise<{id:string}>
 }
 
-export async function generateMetadata({ params }: Props){
+export async function generateMetadata({ params }: Props):Promise<Metadata>{
     const {id} = await params
     const idNum = parseInt(id, 10);
     const note = await fetchNoteById(idNum)
@@ -22,7 +23,7 @@ export async function generateMetadata({ params }: Props){
           url: 'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',
           width: 1200,
           height: 630,
-          alt: 'NoteHub Logo',
+          alt: 'NoteHub app interface preview with sticky notes and handwritten text elementsNoteHub ',
         },
       ],
         

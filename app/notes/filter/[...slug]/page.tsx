@@ -1,5 +1,6 @@
 import { fetchNotes } from "@/lib/api";
 import NotesClient from "./Notes.client";
+import { Metadata } from "next";
 
 
 type NotesByCategoryProps = {
@@ -7,7 +8,7 @@ type NotesByCategoryProps = {
 }
 
 
-export async function generateMetadata({ params }: NotesByCategoryProps){
+export async function generateMetadata({ params }: NotesByCategoryProps):Promise<Metadata>{
     const {slug} = await params
     const tag = slug[0] === "all" ? undefined : slug[0];
     const title = tag ? `${tag} notes` : "All notes";
@@ -24,7 +25,7 @@ export async function generateMetadata({ params }: NotesByCategoryProps){
           url: 'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',
           width: 1200,
           height: 630,
-          alt: 'NoteHub Logo',
+          alt: 'NoteHub app interface preview with sticky notes and handwritten text elementsNoteHub ',
         },
       ],
         

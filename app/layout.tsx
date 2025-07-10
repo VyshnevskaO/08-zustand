@@ -12,13 +12,13 @@ export const metadata:Metadata = {
  openGraph:{
     title: 'NoteHub',
       description: 'Notehub is a web app that helps you create and organise notes.',
-      url: `https://notehub.com/notes/filter/all`,
+      url: `https://notehub.com/`,
       images: [
         {
           url: 'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',
           width: 1200,
           height: 630,
-          alt: 'NoteHub Logo',
+          alt: 'NoteHub app interface preview with sticky notes and handwritten text elementsNoteHub ',
         },
       ],
       type: 'article',
