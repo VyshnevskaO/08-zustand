@@ -67,12 +67,14 @@ export const fetchNoteById = async (id: number):Promise<Note> => {
 }
 
 export const createNewNote = async (data:NewNoteData) => {
-  const res = await axios.post<Note>(`https://notehub-public.goit.study/api/notes/`, {
+  const res = await axios.post<Note>(`https://notehub-public.goit.study/api/notes/`,
     data,
+    {
     headers: {
       Authorization: `Bearer ${API_KEY}`,
-    },
-  });
+    }
+    }
+  );
   return res.data;
 }
 
